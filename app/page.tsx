@@ -27,9 +27,6 @@ const bannerData =[ {
 ]
 export default function Home() {
   const [slots,setSlots] = useState(slotsData)
-  useEffect(()=>{
-    console.log(slots)
-  },[])
   return (
     <main className={styles.main}>
       <div className={styles.main_banner}>
