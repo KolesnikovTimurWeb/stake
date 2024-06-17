@@ -4,6 +4,7 @@ import styles from '@/styles/Main.module.scss'
 import MainBanner from "./components/MainBanner";
 import { useEffect, useState } from "react";
 import slotsData from '@/data.json'
+import Slot from "./components/Slot";
 
 const bannerData =[ {
   title:"Daily Races",
@@ -27,6 +28,7 @@ const bannerData =[ {
 ]
 export default function Home() {
   const [slots,setSlots] = useState(slotsData)
+
   return (
     <main className={styles.main}>
       <div className={styles.main_banner}>
@@ -39,6 +41,16 @@ export default function Home() {
            link={item.link}
            image={item.image}
            />
+        ))}
+      </div>
+      <div className={styles.main_slots}>
+        {slots.map((item,index)=> (
+          <Slot
+          title={item.title}
+          online={item.online}
+          link={item.link}
+          image={item.image}
+          />
         ))}
       </div>
     </main>
