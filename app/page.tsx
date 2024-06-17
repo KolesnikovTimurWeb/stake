@@ -1,94 +1,50 @@
+"use client"
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from '@/styles/Main.module.scss'
+import MainBanner from "./components/MainBanner";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import slotsData from '@/data.json'
 
+const bannerData =[ {
+  title:"Daily Races",
+  desc:"Play in our $100,000 Daily Race",
+  link:"/stink",
+  image:"https://stake.com/casino/home",
+  image:"https://cdn.sanity.io/images/tdrhge4k/production/5dc0dd2eaf6d9ccaf58210a1ad9bb6e2de4405da-1026x1026.jpg",
+},
+{
+  title:"Weekly Raffle",
+  desc:"Share in $75,000 each week",
+  link:"https://stake.com/casino/home",
+  image:"https://cdn.sanity.io/images/tdrhge4k/production/736906d1eabf24938deba8005a976a030a9edf79-1026x1026.jpg",
+},
+{
+  title:"Conquer the Casino",
+  desc:"Win a share in $50,000 every week",
+  link:"https://stake.com/casino/home",
+  image:"https://cdn.sanity.io/images/tdrhge4k/production/ca9fb909b678abef96deee8a1d4a3fd2a4f40afe-1026x1026.jpg",
+}
+]
 export default function Home() {
+  const [slots,setSlots] = useState(null)
+  useEffect(()=>{
+    setSlots(slotsData)
+    console.log(slots)
+  },[])
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className={styles.main_banner}>
+        {bannerData.map((item,index)=> (
+          // I would put id, not index, because index we can change and then application won't work
+          <MainBanner 
+          key={index}
+           title={item.title}
+           desc={item.desc}
+           link={item.link}
+           image={item.image}
+           />
+        ))}
       </div>
     </main>
   );

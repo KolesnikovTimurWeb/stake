@@ -1,0 +1,45 @@
+.main{
+   margin-top: 200px;
+   &_banner{
+      display: grid;
+      grid-template-columns: repeat( auto-fit, minmax(400px, 1fr) );
+
+      gap: 20px;
+   }
+   &_bannerCard{
+      background: #213743;
+      padding: 16px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h2{
+         font-weight: 700;
+         font-size: 26px;
+         line-height: 95%;
+         margin-bottom: 10PX;
+      }
+      p{
+         font-weight: 400;
+         font-size: 16px;
+         margin-bottom: 30px;
+
+      }
+      a{
+         background: none;
+         border: 1px solid #fff;
+         padding: 8px 12px;
+         border-radius: 5px;
+         color: #fff;
+         font-weight: 500;
+         transition: .2s ease-in-out;
+
+         &:hover{
+            background: #fff;
+            color: #000;
+         }
+      }
+   }
+
+}
