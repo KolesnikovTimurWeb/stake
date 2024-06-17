@@ -3,7 +3,6 @@ import Image from "next/image";
 import styles from '@/styles/Main.module.scss'
 import MainBanner from "./components/MainBanner";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import slotsData from '@/data.json'
 
 const bannerData =[ {
@@ -27,9 +26,8 @@ const bannerData =[ {
 }
 ]
 export default function Home() {
-  const [slots,setSlots] = useState(null)
+  const [slots,setSlots] = useState(slotsData)
   useEffect(()=>{
-    setSlots(slotsData)
     console.log(slots)
   },[])
   return (
