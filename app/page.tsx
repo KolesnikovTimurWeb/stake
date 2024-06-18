@@ -28,6 +28,7 @@ const bannerData =[ {
 type InputEvent = React.ChangeEvent<HTMLInputElement>;
 
 export default function Home() {
+  // Use Callback if it was a fetch
   const [slots,setSlots] = useState(slotsData)
   const [filteredSlots,setFilteredSlots] = useState(slots)
   const [inputValue,setInputValue] = useState('')
@@ -42,7 +43,7 @@ export default function Home() {
       }, 1000);
     };
   };
-  const handleChange= (value) => {
+  const handleChange= (value:string) => {
     setInputValue(value);
     const filteredItems = slots.filter((user) =>
       user.title.toLowerCase().includes(value.toLowerCase())
@@ -70,7 +71,7 @@ export default function Home() {
         onChange={debounce((e:React.ChangeEvent<HTMLInputElement>) => {
           handleChange(e.target.value);
           })}
-          type="text" />
+          type="text" placeholder="Write your slot" />
       </div>
       <div className={styles.main_slots}>
         {filteredSlots.map((item,index)=> (
