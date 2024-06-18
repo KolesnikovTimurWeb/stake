@@ -29,16 +29,14 @@ export default function Home() {
   const [slots,setSlots] = useState(slotsData)
   const [inputValue,setInputValue] = useState('')
 
-  const debounce = (onChange:object) => {
-    let timeout:number;
+  const debounce = (onChange:any) => {
+    let timeout:any;
     return (e:any) => {
       const form = e.currentTarget.value;
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         onChange(form);
       }, 1000);
-    console.log(inputValue)
-
     };
   };
 
