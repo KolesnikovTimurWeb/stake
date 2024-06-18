@@ -2,15 +2,14 @@
 import Image from "next/image";
 import styles from '@/styles/Main.module.scss'
 import MainBanner from "./components/MainBanner";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import slotsData from '@/data.json'
 import Slot from "./components/Slot";
 
 const bannerData =[ {
   title:"Daily Races",
   desc:"Play in our $100,000 Daily Race",
-  link:"/stink",
-  image:"https://stake.com/casino/home",
+  link:"https://stake.com/casino/home",
   image:"https://cdn.sanity.io/images/tdrhge4k/production/5dc0dd2eaf6d9ccaf58210a1ad9bb6e2de4405da-1026x1026.jpg",
 },
 {
@@ -28,6 +27,21 @@ const bannerData =[ {
 ]
 export default function Home() {
   const [slots,setSlots] = useState(slotsData)
+  const [inputValue,setInputValue] = useState('')
+
+  const debounce = (onChange:object) => {
+    let timeout:number;
+    return (e:any) => {
+      const form = e.currentTarget.value;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        onChange(form);
+      }, 1000);
+    console.log(inputValue)
+
+    };
+  };
+
 
   return (
     <main className={styles.main}>
@@ -42,6 +56,13 @@ export default function Home() {
            image={item.image}
            />
         ))}
+      </div>
+      <div>
+        <input  
+        onChange={debounce((e) => {
+          setInputValue(e);
+          })}
+          type="text" />
       </div>
       <div className={styles.main_slots}>
         {slots.map((item,index)=> (
