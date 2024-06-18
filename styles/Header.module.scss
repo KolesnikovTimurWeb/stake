@@ -52,3 +52,13 @@
       }
    }
 }
+
+@media screen and (max-width:568px) {
+   .header{
+      padding: 16px 40px;
+      &_user{
+         margin-right: 80px;
+
+      }
+   }
+ }
