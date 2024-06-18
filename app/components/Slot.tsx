@@ -5,7 +5,7 @@ import styles from '@/styles/Main.module.scss'
 
 interface SlotsProps{
    title:string,
-   online:number,
+   online:string,
    link:string,
    image:string,
 }
