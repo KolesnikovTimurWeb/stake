@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { Suspense } from 'react'
+import styles from '@/styles/Main.module.scss'
+
 interface SlotsProps{
    title:string,
    online:number,
@@ -9,12 +11,19 @@ interface SlotsProps{
 }
 const Slot = ({title,online,link ,image}:SlotsProps) => {
   return (
-    <div>
-      <Image src={image} width={100} height={100} alt='Slot'/>
-      <h2>{title}</h2>
-      <span>{online}</span>
-      <Link href={link}>Start Now</Link>
-    </div>
+   <Suspense fallback={<div>Loading...</div>}>
+      <div className={styles.main_slot}>
+         <Image src={image} width={170} height={100} alt='Slot'/>
+         <span> 
+            <div className={styles.main_slot_pulse}></div>
+            {online}
+            </span>
+         <h2>{title}  </h2>
+     
+         <Link href={link}>Start Now</Link>
+      </div>
+   </Suspense>
+
   )
 }
 

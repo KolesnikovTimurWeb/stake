@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styles from '@/styles/Main.module.scss'
 import MainBanner from "./components/MainBanner";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import slotsData from '@/data.json'
 import Slot from "./components/Slot";
 
