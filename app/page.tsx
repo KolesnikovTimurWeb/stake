@@ -46,6 +46,7 @@ export default function Home() {
       <div className={styles.main_slots}>
         {slots.map((item,index)=> (
           <Slot
+          key={index}
           title={item.title}
           online={item.online}
           link={item.link}

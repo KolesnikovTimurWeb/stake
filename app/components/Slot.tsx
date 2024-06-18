@@ -13,7 +13,7 @@ const Slot = ({title,online,link ,image}:SlotsProps) => {
   return (
    <Suspense fallback={<div>Loading...</div>}>
       <div className={styles.main_slot}>
-         <Image src={image} width={170} height={100} alt='Slot'/>
+         <Image loading='lazy' src={image} width={170} height={100} alt='Slot'/>
          <span> 
             <div className={styles.main_slot_pulse}></div>
             {online}
