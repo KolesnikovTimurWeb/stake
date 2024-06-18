@@ -1,9 +1,23 @@
 .main{
    margin-top: 200px;
 
+   &_input{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      input{
+         margin-top: 20px;
+         width: 100%;
+         padding: 10px;
+         border-radius: 10px;
+         background: #0f212e;
+         color: #557086;
+      }
+   }
    &_slots{
       display: grid;
-      grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
+      grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );
       margin-top: 100px;
       gap: 20px;
    }

@@ -19,7 +19,6 @@ const Slot = ({title,online,link ,image}:SlotsProps) => {
             {online}
             </span>
          <h2>{title}  </h2>
-     
          <Link href={link}>Start Now</Link>
       </div>
    </Suspense>

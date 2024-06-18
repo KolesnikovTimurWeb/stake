@@ -29,6 +29,7 @@ type InputEvent = React.ChangeEvent<HTMLInputElement>;
 
 export default function Home() {
   const [slots,setSlots] = useState(slotsData)
+  const [filteredSlots,setFilteredSlots] = useState(slots)
   const [inputValue,setInputValue] = useState('')
 
   const debounce = (onChange:any) => {
@@ -41,7 +42,14 @@ export default function Home() {
       }, 1000);
     };
   };
-
+  const handleChange= (value) => {
+    setInputValue(value);
+    const filteredItems = slots.filter((user) =>
+      user.title.toLowerCase().includes(value.toLowerCase())
+      );
+  
+      setFilteredSlots(filteredItems);
+  }
 
   return (
     <main className={styles.main}>
@@ -57,15 +65,15 @@ export default function Home() {
            />
         ))}
       </div>
-      <div>
+      <div className={styles.main_input}>
         <input  
         onChange={debounce((e:React.ChangeEvent<HTMLInputElement>) => {
-          setInputValue(e.target.value);
+          handleChange(e.target.value);
           })}
           type="text" />
       </div>
       <div className={styles.main_slots}>
-        {slots.map((item,index)=> (
+        {filteredSlots.map((item,index)=> (
           <Slot
           key={index}
           title={item.title}
