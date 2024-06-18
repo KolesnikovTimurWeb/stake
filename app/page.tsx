@@ -34,7 +34,7 @@ export default function Home() {
   const debounce = (onChange:any) => {
     let timeout:any;
     return (e:InputEvent) => {
-      const form = e.currentTarget.value;
+      const form = e;
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         onChange(form);
@@ -60,7 +60,7 @@ export default function Home() {
       <div>
         <input  
         onChange={debounce((e:React.ChangeEvent<HTMLInputElement>) => {
-          setInputValue(e);
+          setInputValue(e.target.value);
           })}
           type="text" />
       </div>
