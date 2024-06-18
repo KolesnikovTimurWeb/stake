@@ -59,7 +59,7 @@ export default function Home() {
       </div>
       <div>
         <input  
-        onChange={debounce((e) => {
+        onChange={debounce((e:React.ChangeEvent<HTMLInputElement>) => {
           setInputValue(e);
           })}
           type="text" />
