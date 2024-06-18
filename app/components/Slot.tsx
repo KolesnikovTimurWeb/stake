@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { Suspense } from 'react'
+import React, { Suspense, memo } from 'react'
 import styles from '@/styles/Main.module.scss'
 
 interface SlotsProps{
@@ -26,4 +26,4 @@ const Slot = ({title,online,link ,image}:SlotsProps) => {
   )
 }
 
-export default Slot
+export default memo(Slot)
