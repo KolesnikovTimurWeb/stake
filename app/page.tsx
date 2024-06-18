@@ -25,13 +25,15 @@ const bannerData =[ {
   image:"https://cdn.sanity.io/images/tdrhge4k/production/ca9fb909b678abef96deee8a1d4a3fd2a4f40afe-1026x1026.jpg",
 }
 ]
+type InputEvent = React.ChangeEvent<HTMLInputElement>;
+
 export default function Home() {
   const [slots,setSlots] = useState(slotsData)
   const [inputValue,setInputValue] = useState('')
 
   const debounce = (onChange:any) => {
     let timeout:any;
-    return (e:any) => {
+    return (e:InputEvent) => {
       const form = e.currentTarget.value;
       clearTimeout(timeout);
       timeout = setTimeout(() => {
